@@ -29,6 +29,13 @@ def autocomplete():
     suggestions = [title for title in music['title'].values if query in title.lower()]
     return jsonify(suggestions)
 
+@app.route('/tags')
+def tags_complete():
+    query = request.args.get('query', '').lower()
+    suggestions = [title for title in music['tags'].values if query in title.lower()]
+    return jsonify(suggestions)
+    
+
 
 @app.route('/recommend', methods=['POST'])
 def get_recommendations():
